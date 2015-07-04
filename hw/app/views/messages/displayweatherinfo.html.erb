@@ -25,14 +25,21 @@
 
 <!-- Check if city if valid or not -->
 <% if data["cod"].to_i == 200 %>
-<% temp = data["main"]["temp"] %>
-<p>
-<%= "It is currently #{temp} degrees in #{city}." %>
-</p>
+  <% temp = data["main"]["temp"] %>
+  <% temp_min = data["main"]["temp_min"] %>
+  <% temp_max = data["main"]["temp_max"] %>
+  <p>
+  <%= "It is currently #{temp} degrees in #{city}." %>
+  </p>
+  <p>
+  <%= "The Min temperature : #{temp_min}" %>
+  </p>
+  <p>
+  <%= "The Max temperature : #{temp_max}" %>
+  </p>
 <% else %>
-
-<!-- If the city is invalid ask to enter valid city -->
-<p>
-<%= "Please enter a valid city." %>
-</p>
+  <!-- If the city is invalid ask to enter valid city -->
+  <p>
+  <%= "Please enter a valid city." %>
+  </p>
 <% end %>

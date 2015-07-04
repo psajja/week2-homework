@@ -1,9 +1,12 @@
 <% name = params["salutation"] %>
 
 <h1>
-<% if name==nil %>
-    <%= "hello" %>
 
+<!-- If no salutation, say hello -->
+<% if name==nil %>
+    <%= "Hello" %>
+
+<!-- Say the name of the person -->
 <% else %>
     <%= name %>
 <% end %>
