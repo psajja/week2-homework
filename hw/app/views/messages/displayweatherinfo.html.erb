@@ -1,0 +1,38 @@
+<h1>Current Conditions:</h1>
+
+<!-- Retreive the name of the city -->
+<% city = params["city"] %>
+
+
+<!-- Require Ruby libraries -->
+<% require 'open-uri' %>
+<% require 'json' %>
+
+
+<% location = city %>
+
+
+<% location = URI.escape(location) %>
+
+<!-- Send an HTTP request to the OpenWeatherMap API -->
+<% json_data = open("http://api.openweathermap.org/data/2.5/weather?q=#{location}&units=imperial").read %>
+
+
+<!-- Parse Json Data -->
+<% data = JSON.parse(json_data) %>
+
+
+
+<!-- Check if city if valid or not -->
+<% if data["cod"].to_i == 200 %>
+<% temp = data["main"]["temp"] %>
+<p>
+<%= "It is currently #{temp} degrees in #{city}." %>
+</p>
+<% else %>
+
+<!-- If the city is invalid ask to enter valid city -->
+<p>
+<%= "Please enter a valid city." %>
+</p>
+<% end %>
